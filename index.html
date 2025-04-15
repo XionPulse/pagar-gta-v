@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cobro por Transferencia</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #f9f9f9;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    #cvu {
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .copy-btn {
+      background-color: #4CAF50;
+      color: white;
+      margin-right: 10px;
+    }
+
+    .copy-btn:hover {
+      background-color: #45a049;
+    }
+
+    .pagar-btn {
+      background-color: #2196F3;
+      color: white;
+    }
+
+    .pagar-btn:hover {
+      background-color: #1e88e5;
+    }
+
+    .copied {
+      margin-top: 10px;
+      color: green;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Enviar dinero</h1>
+    <p>Transfiere al siguiente CVU:</p>
+    <div id="cvu">0000003100029040588802</div>
+
+    <button class="copy-btn" onclick="copiarCVU()">Copiar CVU</button>
+    <button class="pagar-btn" onclick="abrirLinkDePago()">Pagar con Link</button>
+
+    <div class="copied" id="mensajeCopiado">¡CVU copiado!</div>
+  </div>
+
+  <script>
+    function copiarCVU() {
+      const cvu = document.getElementById('cvu').innerText;
+      navigator.clipboard.writeText(cvu).then(() => {
+        const mensaje = document.getElementById('mensajeCopiado');
+        mensaje.style.display = 'block';
+        setTimeout(() => {
+          mensaje.style.display = 'none';
+        }, 2000);
+      });
+    }
+
+    function abrirLinkDePago() {
+      // Aquí puedes poner un link de Mercado Pago, Ualá, etc.
+      window.open('https://www.mercadopago.com.ar', '_blank');
+    }
+  </script>
+</body>
+</html>
